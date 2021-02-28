@@ -1,0 +1,67 @@
+---
+title: "Food Waste Data"
+output: html_notebook
+---
+
+```{r}
+str(UPDATED_Food_Waste_Data$`Food Waste (Tons)`)
+
+UPDATED_Food_Waste_Data %>%
+  ggplot(aes(x=`Year (6/30-6/30)`,y=as.numeric(`Grand Total (Tons)`), color=`Data Found In`)) +
+  scale_color_manual(values=c("#333AFF", "#1D9A6C")) +
+  geom_point() +
+  geom_line()+
+  theme_bw() +
+  labs(title="UMass Grand Total Waste", x="Year (2009-2018)", y="Grand Total (Tons)", color="Data Found In") +
+  scale_y_continuous(breaks=seq(0,9000,250)) +
+  scale_x_continuous(breaks=seq(0,2019,2))
+
+summary(Food_Waste_Data_FINAL$`Data Found In`)
+
+ggsave("FINALgrand_total_plot.png", width=8, height=8, units="in")
+
+```
+
+
+```{r}
+UPDATED_Food_Waste_Data %>%
+  ggplot(aes(x=`Year (6/30-6/30)`,y=as.numeric(`Refuse Total (Tons)`), color=`Data Found In`)) +
+  scale_color_manual(values=c("#333AFF", "#1D9A6C")) +
+  geom_point() +
+  geom_line()+
+  theme_bw() +
+  labs(title="UMass Trash Waste",x="Year (2009-2018)", y="Refuse Total (Tons)", color="Data Found In") +
+  scale_y_continuous(breaks=seq(0,9000,250)) +
+  scale_x_continuous(breaks=seq(0,2019,2))
+
+ggsave("FINALrefuse_total_plot.png", width=8, height=8, units="in")
+```
+
+```{r}
+UPDATED_Food_Waste_Data %>%
+  ggplot(aes(x=`Year (6/30-6/30)`,y=as.numeric(`Recyclable Total (Tons)`), color=`Data Found In`)) +
+  scale_color_manual(values=c("#333AFF", "#1D9A6C")) +
+  geom_point() +
+  geom_line()+
+  theme_bw() +
+  labs(title="UMass Recyclable Waste", x="Year (2009-2018)", y="Recyclable Total (Tons)", color="Data Found In") +
+  scale_y_continuous(breaks=seq(0,9000,250)) +
+  scale_x_continuous(breaks=seq(0,2019,2))
+
+ggsave("FINALrecyclable_total_plot.png", width=8, height=8, units="in")
+```
+
+```{r}
+UPDATED_Food_Waste_Data %>%
+  ggplot(aes(x=`Year (6/30-6/30)`,y=as.numeric(`Food Waste (Tons)`), color=`Data Found In`)) +
+  scale_color_manual(values=c("#333AFF", "#1D9A6C")) +
+  geom_point() +
+  geom_line()+
+  theme_bw() +
+  labs(title="UMass Food Waste", x="Year (2009-2018)", y="Food Waste (Tons)", color="Data Found In") +
+  scale_y_continuous(breaks=seq(0,9000,250)) +
+  scale_x_continuous(breaks=seq(0,2019,2))
+
+ggsave("FINALfood_waste_plot.png", width=8, height=8, units="in")
+```
+
